@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>당신의 마음건강을 응원합니다</title>
+  <!-- GitHub Pages에서는 절대 경로 사용을 권장합니다 -->
+  <link rel="stylesheet" href="/styles.css"> <!-- CSS 파일 경로를 절대경로로 수정 -->
+  <style>
+    /* HTML 내에서 기본 스타일을 추가할 수 있음 */
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+      text-align: center;
+      letter-spacing: 2px; /* 글자 간격 조정 */
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .quote {
+      font-size: 3rem;  /* 글자 크기 */
+      font-weight: bold;  /* 글씨 두껍게 */
+      color: #007bff;  /* 파란색 계열 */
+      line-height: 1.5;  /* 줄 간격 */
+      text-transform: uppercase;  /* 대문자화 */
+      word-wrap: break-word;  /* 긴 문장이 잘리거나 넘치지 않게 처리 */
+    }
+  </style>
+</head>
+<body>
+  <div id="quote" class="quote fade-in">
+    여기에 응원 메시지가 나타납니다.
+  </div>
+
+  <script>
+    // 랜덤 응원 메시지 배열
+    const quotes = [
+      "너는 할 수 있어!",
+      "매일 조금씩 나아지고 있어!",
+      "자신감을 가져, 넌 이미 멋져!",
+      "어려움이 있더라도 계속 나아가!",
+      "네가 상상하는 것보다 훨씬 더 강해!"
+    ];
+
+    // 랜덤 메시지 함수
+    function showRandomQuote() {
+      const quoteElement = document.getElementById('quote');
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      quoteElement.textContent = quotes[randomIndex];
+
+      // 애니메이션 다시 적용
+      quoteElement.classList.remove('fade-in');
+      void quoteElement.offsetWidth;  // 트릭을 위한 강제 리플로우
+      quoteElement.classList.add('fade-in');
+    }
+
+    // 페이지가 로드되면 랜덤 메시지 표시
+    window.onload = showRandomQuote;
+  </script>
+</body>
+</html>
